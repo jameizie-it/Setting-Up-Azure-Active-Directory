@@ -20,11 +20,11 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
 <h2>Steps:</h2>
 
 - Step 1: Azure Resources Setup<br>
-- Step 2: Create Client-1 VM<br>
-- Step 3: Ensure Client-DC Connectivity<br>
+- Step 2: Create VM1 VM<br>
+- Step 3: Ensure VM1-DC Connectivity<br>
 - Step 4: Install Active Directory<br>
 - Step 5: Create Admin and User<br>
-- Step 6: Join Client-1 to Domain<br>
+- Step 6: Join VM1 to Domain<br>
 - Step 7: Setup Remote Desktop Access<br>
 - Step 8: Create and Log into Users
 
@@ -44,12 +44,12 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Create the Domain Controller VM (Windows Server 2022) named "DC-1."
+        Create the Domain Controller VM (Windows Server 2022) named "DC"
         Take note of the Resource Group and Virtual Network (Vnet) created during this step.
         Set the Domain Controller's NIC Private IP address to be static.
       </p>
       <ol>
-        <li>Navigate to DC-1 in the Azure portal.</li>
+        <li>Navigate to DC in the Azure portal.</li>
         <li>Go to "Networking" and select "Network Interface."</li>
         <li>Click on the highlighted network interface.</li>
         <li>Go to "IP configurations" and click on the configuration.</li>
@@ -57,7 +57,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       </ol>
     </li>
     <li>
-      <h2>Create the Client VM (Windows 10) named "Client-1"</h2>
+      <h2>Create the Client VM (Windows 10) named "VM1"</h2>
       <p>
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
@@ -68,12 +68,12 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       </p>
     </li>
     <li>
-      <h2>Ensure Connectivity between the client and Domain Controller</h2>
+      <h2>Ensure Connectivity between the VM1 and Domain Controller</h2>
       <p>
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Login to Client-1 using Remote Desktop and ping DC-1's private IP address with the command "ping -t &lt;ip address&gt;" to establish a perpetual ping.
+        Login to VM1 using Remote Desktop and ping DC's private IP address with the command "ping -t &lt;ip address&gt;" to establish a perpetual ping.
         Login to the Domain Controller and enable ICMPv4 in the local Windows Firewall.
       </p>
       <ol>
@@ -81,7 +81,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
         <li>Sort by protocol and look for "ICMPv4."</li>
         <li>Enable the "Core Networking Echo Request" rule.</li>
       </ol>
-      <p>Check Client-1 to see if the ping to DC-1's private IP address is successful.</p>
+      <p>Check VM1 to see if the ping to DC's private IP address is successful.</p>
     </li>
     <li>
       <h2>Install Active Directory</h2>
@@ -89,17 +89,17 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Login to DC-1 and install Active Directory Domain Services.
+        Login to DC and install Active Directory Domain Services.
         Open the Server Manager application in Windows.
         Click on "Add Roles and Features" and proceed until "Server Roles."
         Select "Active Directory Domain Services" and install it.
-        Promote DC-1 as a Domain Controller.
+        Promote DC as a Domain Controller.
       </p>
       <ol>
         <li>Launch the Server Manager application.</li>
         <li>Click on the flag in the top right corner and select "Promote this server to a domain controller."</li>
         <li>Follow the prompts to set up a new forest (e.g., "mydomain.com") and provide a password.</li>
-        <li>Restart DC-1 and log back in as the user "mydomain.com\labuser" since it is now an Active Directory environment.</li>
+        <li>Restart DC and log back in as the user "mydomain.com\labuser" since it is now an Active Directory environment.</li>
       </ol>
     </li>
     <li>
@@ -116,54 +116,54 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       </p>
       <ol>
         <li>Right-click on "jane_admin," go to "Properties," select "Member Of," click "Add," look up the "Domain Admins," and add it. Apply the changes.</li>
-        <li>Log out or close the Remote Desktop connection to DC-1 and log back in as "mydomain.com\jane_admin." Use this admin account for further actions.</li>
+        <li>Log out or close the Remote Desktop connection to DC and log back in as "mydomain.com\jane_admin." Use this admin account for further actions.</li>
       </ol>
     </li>
     <li>
-      <h2>Join Client-1 to your domain (mydomain.com)</h2>
+      <h2>Join VM1 to your domain (mydomain.com)</h2>
       <p>
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Set Client-1's DNS settings to the DC's Private IP address from the Azure Portal.
+        Set VM1's DNS settings to the DC's Private IP address from the Azure Portal.
       </p>
       <ol>
         <li>Go to VM1 in Azure portal, navigate to "Networking," and copy the NIC's private IP address.</li>
         <li>Go to VM2, access the "Networking" settings, select the virtual NIC, go to "DNS servers," choose "Custom," and input the private IP from VM1.</li>
-        <li>Restart Client-1 and log in to it using Remote Desktop as the original local admin (labuser).</li>
-        <li>Join Client-1 to the domain, which will result in a restart.</li>
-        <li>Login to the Domain Controller using Remote Desktop and verify that Client-1 shows up in Active Directory Users and Computers (ADUC) within the "Computers" container at the root of the domain.</li>
-        <li>Create a new OU named "_CLIENTS" and move Client-1 into it.</li>
+        <li>Restart VM1 and log in to it using Remote Desktop as the original local admin (labuser).</li>
+        <li>Join VM1 to the domain, which will result in a restart.</li>
+        <li>Login to the Domain Controller using Remote Desktop and verify that VM1 shows up in Active Directory Users and Computers (ADUC) within the "Computers" container at the root of the domain.</li>
+        <li>Create a new OU named "_CLIENTS" and move VM1 into it.</li>
       </ol>
     </li>
     <li>
-      <h2>Setup Remote Desktop for non-administrative users on Client-1</h2>
+      <h2>Setup Remote Desktop for non-administrative users on VM1</h2>
       <p>
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Log into Client-1 as "mydomain.com\jane_admin" and open system properties.
+        Log into VM1 as "mydomain.com\jane_admin" and open system properties.
       </p>
       <ol>
         <li>Right-click the Start menu, go to "System," and open system properties.</li>
         <li>In the system properties, go to the "Remote" tab and select "Users" who can remotely access this PC.</li>
         <li>Click "Add," search for "domain users" and select it, then click "OK."</li>
       </ol>
-      <p>Now, regular non-administrative users can log into Client-1 using Remote Desktop.</p>
+      <p>Now, regular non-administrative users can log into VM1 using Remote Desktop.</p>
     </li>
     <li>
-      <h2>Create additional users and attempt to log into Client-1 with one of the users</h2>
+      <h2>Create additional users and attempt to log into VM1 with one of the users</h2>
       <p>
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Log in to DC-1 as "jane_admin."
+        Log in to DC as "jane_admin."
         Use the command "whoami" to verify the current user and "hostname" to check the host name.
         Open PowerShell ISE as an administrator.
         Create a new file and paste the contents of the script from this URL: <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1</a>
         Run the script and observe the user accounts being created.
         Once the script finishes, open ADUC and verify that the accounts are present in the appropriate OU.
-        Attempt to log into Client-1 using one of the newly created user accounts (refer to the password mentioned in the script).
+        Attempt to log into VM1 using one of the newly created user accounts (refer to the password mentioned in the script).
         To reset the password or unlock an account, right-click on the user in the "_EMPLOYEES" OU and perform the necessary actions.
       </p>
     </li>

@@ -153,13 +153,13 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Log in to DC as "jane_admin."
-        Use the command "whoami" to verify the current user and "hostname" to check the host name.
-        Open PowerShell ISE as an administrator.
-        Create a new file and paste the contents of the script from this URL: <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1</a>
-        Run the script and observe the user accounts being created.
-        Once the script finishes, open ADUC and verify that the accounts are present in the appropriate OU.
-        Attempt to log into VM1 using one of the newly created user accounts (refer to the password mentioned in the script).
+        Log in to DC as "jane_admin." <br>
+        Use the command "whoami" to verify the current user and "hostname" to check the host name. <br>
+        Open PowerShell ISE as an administrator.<br>
+        Create a new file and paste the contents of the script from this URL: <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1</a> <br>
+        Run the script and observe the user accounts being created.<br>
+        Once the script finishes, open ADUC and verify that the accounts are present in the appropriate OU.<br>
+        Attempt to log into VM1 using one of the newly created user accounts (refer to the password mentioned in the script).<br>
         To reset the password or unlock an account, right-click on the user in the "_EMPLOYEES" OU and perform the necessary actions.
       </p>
     </li>

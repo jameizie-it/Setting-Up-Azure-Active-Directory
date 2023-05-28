@@ -30,9 +30,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
 
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Azure Active Directory Setup Guide</title>
-</head>
+  
 <body>
   <h1>Azure Active Directory Setup Guide</h1>
   <ol>

@@ -107,12 +107,12 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
         In Active Directory Users and Computers (ADUC), create an Organizational Unit (OU) called "_EMPLOYEES" within the domain.com.
         Launch Active Directory Users and Computers (ADUC) from the administrative tools.
         Create a new OU named "_ADMINS."
-        Within "_ADMINS," create a new employee named "Jane Doe" (same password) with the username "jane_admin."
-        Add "jane_admin" to the "Domain Admins" Security Group.
+        Within "_ADMINS," create a new employee named "John Doe" (same password) with the username "john_admin."
+        Add "john_admin" to the "Domain Admins" Security Group.
       </p>
       <ol>
-        <li>Right-click on "jane_admin," go to "Properties," select "Member Of," click "Add," look up the "Domain Admins," and add it. Apply the changes.</li>
-        <li>Log out or close the Remote Desktop connection to DC and log back in as "mydomain.com\jane_admin." Use this admin account for further actions.</li>
+        <li>Right-click on "john_admin," go to "Properties," select "Member Of," click "Add," look up the "Domain Admins," and add it. Apply the changes.</li>
+        <li>Log out or close the Remote Desktop connection to DC and log back in as "mydomain.com\john_admin." Use this admin account for further actions.</li>
       </ol>
     </li>
     <li>
@@ -138,7 +138,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Log into VM1 as "mydomain.com\jane_admin" and open system properties.
+        Log into VM1 as "mydomain.com\john_admin" and open system properties.
       </p>
       <ol>
         <li>Right-click the Start menu, go to "System," and open system properties.</li>
@@ -153,8 +153,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
-        Log in to DC as "jane_admin." <br>
-        Use the command "whoami" to verify the current user and "hostname" to check the host name. <br>
+        Log in to DC as "john_admin." <br>
         Open PowerShell ISE as an administrator.<br>
         Create a new file and paste the contents of the script from this URL: <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1</a> <br>
         Run the script and observe the user accounts being created.<br>

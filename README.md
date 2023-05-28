@@ -28,8 +28,6 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
 - Step 7: Setup Remote Desktop Access<br>
 - Step 8: Create and Log into Users
 
-<h2>Deployment and Configuration Steps:</h2>
-
 <!DOCTYPE html>
 <html>
 <head>

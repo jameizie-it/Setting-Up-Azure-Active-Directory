@@ -17,7 +17,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
 - Windows Server 2022
 - Windows 10 (21H2)
 
-<h2>Steps:</h2>
+<h2>Overview of Steps:</h2>
 
 - Step 1: Azure Resources Setup<br>
 - Step 2: Create VM1 VM<br>

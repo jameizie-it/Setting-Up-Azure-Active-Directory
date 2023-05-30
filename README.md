@@ -155,7 +155,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <p>
         Log in to DC as "john_admin." <br>
         Open PowerShell ISE as an administrator.<br>
-        Create a new file and paste the contents of the script from this URL: <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1</a> <br>
+        Create a new file and paste the contents of the script from this <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">URL</a>.
         Run the script and observe the user accounts being created.<br>
         Once the script finishes, open ADUC and verify that the accounts are present in the appropriate OU.<br>
         Attempt to log into VM1 using one of the newly created user accounts (refer to the password mentioned in the script).

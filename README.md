@@ -159,7 +159,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
         Run the script and observe the user accounts being created.<br>
         Once the script finishes, open ADUC and verify that the accounts are present in the appropriate OU.<br>
         Attempt to log into VM1 using one of the newly created user accounts (refer to the password mentioned in the script).<br>
-        To reset the password or unlock an account, right-click on the user in the "_EMPLOYEES" OU and perform the necessary actions.
+    
       </p>
     </li>
   </ol>

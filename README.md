@@ -95,7 +95,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
         <li>Launch the Server Manager application.</li>
         <li>Click on the flag in the top right corner and select "Promote this server to a domain controller."</li>
         <li>Follow the prompts to set up a new forest (e.g., "mydomain.com") and provide a password.</li>
-        <li>Restart DC and log back in as the user "mydomain.com\labuser" since it is now an Active Directory environment.</li>
+        <li>Restart DC and log back in as the user "mydomain.com\DC" since it is now an Active Directory environment.</li>
       </ol>
     </li>
     <li>
@@ -126,7 +126,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
       <ol>
         <li>Go to VM1 in Azure portal, navigate to "Networking," and copy the NIC's private IP address.</li>
         <li>Go to VM2, access the "Networking" settings, select the virtual NIC, go to "DNS servers," choose "Custom," and input the private IP from VM1.</li>
-        <li>Restart VM1 and log in to it using Remote Desktop as the original local admin (labuser).</li>
+        <li>Restart VM1 and log in to it using Remote Desktop as the original local admin (DC).</li>
         <li>Join VM1 to the domain, which will result in a restart.</li>
         <li>Login to the Domain Controller using Remote Desktop and verify that VM1 shows up in Active Directory Users and Computers (ADUC) within the "Computers" container at the root of the domain.</li>
         <li>Create a new OU named "_CLIENTS" and move VM1 into it.</li>

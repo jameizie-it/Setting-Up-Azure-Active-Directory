@@ -55,7 +55,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Create the Client VM (Windows 10) named "VM1"</h2>
       <p>
-      <img src="https://imgur.com/a/cCtvaOC" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/ZPVne2R.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         Use the same Resource Group and Vnet created in Step 1.
@@ -66,7 +66,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Ensure Connectivity between the VM1 and Domain Controller</h2>
       <p>
-      <img src="https://imgur.com/a/oQ3wqLG" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/MOobBM5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         Login to VM1 using Remote Desktop and ping DC's private IP address with the command "ping -t &lt;ip address&gt;" to establish a perpetual ping.
@@ -82,7 +82,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Install Active Directory</h2>
       <p>
-      <img src="https://imgur.com/a/XrO6eNX" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/a9UU4fa.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         Login to DC and install Active Directory Domain Services.
@@ -101,7 +101,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Create an Admin and Normal User Account in AD</h2>
       <p>
-      <img src="https://imgur.com/a/5uXZl6q" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/IFMi9IA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         In Active Directory Users and Computers (ADUC), create an Organizational Unit (OU) called "_EMPLOYEES" within the domain.com.
@@ -118,7 +118,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Join VM1 to your domain (mydomain.com)</h2>
       <p>
-      <img src="https://imgur.com/a/Y1pRPy5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/Eb2wpS7.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         Set VM1's DNS settings to the DC's Private IP address from the Azure Portal.
@@ -135,7 +135,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Setup Remote Desktop for non-administrative users on VM1</h2>
       <p>
-      <img src="https://imgur.com/a/MKhlEre" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/Wt0UEon.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         Log into VM1 as "mydomain.com\john_admin" and open system properties.
@@ -150,7 +150,7 @@ This guide covers Azure resource setup, creating a domain controller VM, establi
     <li>
       <h2>Create additional users and attempt to log into VM1 with one of the users</h2>
       <p>
-      <img src="https://imgur.com/a/WWM1tp0" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/eYKda1c.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       </p>
       <p>
         Log in to DC as "john_admin." <br>
